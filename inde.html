@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription — DocuSafe</title>
+  <link rel="stylesheet" href="gestionnaire.css">
+</head>
+<body class="signup-page">
+  <main class="signup-box">
+    <a class="signup-brand" href="gestionnaire.html"><span>✓</span>DocuSafe</a>
+    <h1>Créez votre portefeuille</h1>
+    <p>Conservez vos documents numérisés en un seul endroit.</p>
+    <form id="signupForm" class="signup-form">
+      <label>Nom complet<input id="name" required placeholder="Votre nom"></label>
+      <label>Adresse e-mail<input id="email" type="email" required placeholder="vous@exemple.com"></label>
+      <label>Mot de passe<input type="password" required minlength="6" placeholder="6 caractères minimum"></label>
+      <label class="check"><input type="checkbox" required> J’accepte les conditions d’utilisation.</label>
+      <button class="primary" type="submit">Créer mon compte</button>
+    </form>
+    <p class="signup-note">Déjà inscrit ? <a href="gestionnaire.html">Ouvrir mon portefeuille</a></p>
+  </main>
+  <script>
+    document.querySelector('#signupForm').addEventListener('submit', event => {
+      event.preventDefault();
+      localStorage.setItem('docusafe-user', JSON.stringify({name:document.querySelector('#name').value,email:document.querySelector('#email').value}));
+      window.location.href='gestionnaire.html';
+    });
+  </script>
+</body>
+</html>
